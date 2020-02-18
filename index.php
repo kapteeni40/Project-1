@@ -6,6 +6,10 @@
         <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
+        <?php 
+            include 'config.php'; // Connection configuration
+            include 'open.php'; // Database connection
+        ?>
         <header>
             <div class="logo_container">
                 <img class="logo" src="https://images3.memedroid.com/images/UPLOADED279/5bd6cc01a70a6.jpeg" alt="logo">
@@ -17,11 +21,17 @@
                 <h2>BANNER</h2>
             </div>
             <table>
-            <?php //while ($row = $result->fetch_assoc()): ?>
-	            <tr>
-		            <td><?php echo '<h3>Otsikko</h3><p>Esimerkkitekstiä</p>'; ?></td>
-	            </tr>
-	        <?php //endwhile; ?>
+            <?php 
+                $sql = "SELECT ID, Headline, ImgRef FROM Articles";
+                $result = mysqli_query($connection, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<tr><td>' . '<h3>' . $row["Headline"] . '</h3><p></p></td></tr>';
+                    }
+                } else {
+                    echo "No results";
+                }
+            ?>
             </table>
             <div class="banner_2">
                 <h2>BANNER</h2>
@@ -31,5 +41,6 @@
             <div class="contact_info"></div>
             <div class="social_media"></div>
         </footer>
+        <?php include 'close.php'; // Close connection ?>
     </body>
 </html>
