@@ -1,6 +1,6 @@
 <?php
     $servername = "localhost";
-    $username = "id11752763_admin";
+    $username = "id12791829_trilobate";
     $password = "parakapu";
-    $dbname = "id11752763_db1";
+    $dbname = "id12791829_trilobatedb1";
 ?>
