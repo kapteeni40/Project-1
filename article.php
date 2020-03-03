@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/article.css">
     </head>
     <body>
         <?php 
@@ -23,21 +23,19 @@
             <div class="banner_2">
                 <h2>BANNER</h2>
             </div>
-            <div class="content">
-                <table>
-                <?php 
-                    $sql = "SELECT ID, Headline, ImgRef FROM Articles";
-                    $result = mysqli_query($connection, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<tr><td>' . '<h3>' . $row["Headline"] . '</h3><p></p></td></tr>';
-                        }
-                    } else {
-                        echo "No results";
+            <?php
+                $sql = "SELECT Headline, ImgRef, Text FROM Articles WHERE ID=1";
+                $result = mysqli_query($connection, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<h3 class="article_head">' . $row["Headline"] . '</h3>';
+                        echo '<img class="article_img" src="' . $row["ImgRef"] . '" alt="Image">';
+                        echo '<p class="article_text">' . $row["Text"] . '</p>';
                     }
-                ?>
-                </table>
-            </div>
+                } else {
+                    echo "No results";
+                }
+            ?>
         </div>
         <footer>
             <div class="contact_info"></div>
