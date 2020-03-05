@@ -30,7 +30,7 @@
                     $result = mysqli_query($connection, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<tr><td>' . '<h3>' . $row["Headline"] . '</h3><p></p></td></tr>';
+                            echo '<tr><a href="/article.php?id=' . $row["ID"] . '"<td>' . '<h3>' . $row["Headline"] . '</h3><p></p></td></a></tr>';
                         }
                     } else {
                         echo "No results";

@@ -24,7 +24,8 @@
                 <h2>BANNER</h2>
             </div>
             <?php
-                $sql = "SELECT Headline, ImgRef, Text FROM Articles WHERE ID=1";
+                $id = $_GET["id"];
+                $sql = "SELECT Headline, ImgRef, Text FROM Articles WHERE ID=$id";
                 $result = mysqli_query($connection, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
