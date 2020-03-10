@@ -24,22 +24,18 @@
                 <h2>BANNER</h2>
             </div>
             <?php
-                if (isset($_GET["id"])) {
-                    $id = $_GET["id"];
-                    $sql = "SELECT Headline, ImgRef, Text FROM Articles WHERE ID=$id";
-                    $result = mysqli_query($connection, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<h3 class="article_head">' . $row["Headline"] . '</h3>';
-                            echo '<img class="article_img" src="' . $row["ImgRef"] . '" alt="Image">';
-                            echo '<p class="article_text">' . $row["Text"] . '</p>';
-                        }
-                    } else {
-                        echo "No results";
+                $id = $_GET["id"];
+                $sql = "SELECT Headline, ImgRef, Text FROM Articles WHERE ID=$id";
+                $result = mysqli_query($connection, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<h3 class="article_head">' . $row["Headline"] . '</h3>';
+                        echo '<img class="article_img" src="' . $row["ImgRef"] . '" alt="Image">';
+                        echo '<p class="article_text">' . $row["Text"] . '</p>';
                     }
                 } else {
-                        echo "Error: No defined Article ID!";
-                    }
+                    echo "No results";
+                }
             ?>
         </div>
         <footer>
