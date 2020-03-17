@@ -14,7 +14,6 @@
             <div class="logo_container">
                 <img class="logo" src="https://images3.memedroid.com/images/UPLOADED279/5bd6cc01a70a6.jpeg" alt="logo">
             </div>
-            <div class="login_container">Login here possibly</div>
         </header>
         <div class="content_container">
             <div class="banner_1">
