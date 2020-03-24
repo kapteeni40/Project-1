@@ -26,6 +26,14 @@ table {
     width: 100%;
 }
 
+td {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
 .banner_1 {
     background-color: aqua;
     grid-column-start: 1;
