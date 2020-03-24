@@ -3,5 +3,4 @@
     if ($connection->connect_error) { // Connection check
         die("Connection failure: " . $connection->connect_error);
     }
-    echo "Connection success";
 ?>
