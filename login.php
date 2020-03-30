@@ -3,7 +3,7 @@
         $user = $_POST["username"];
         $password = $_POST["password"];
         if (empty($user) || empty($password)) { // Empty field(s)
-            header("Location: test.php?error=emptyfield");
+            header("Location: admin_login.php?error=emptyfield");
             exit();
         }
         include 'config.php'; // Connection configuration
@@ -11,7 +11,7 @@
         $sql = "SELECT Username, Password FROM Users WHERE Username=?";
         $stmt = mysqli_stmt_init($connection);
         if (!mysqli_stmt_prepare($stmt, $sql)) { // Checks for errors with Database
-            header("Location: test.php?error=dberror");
+            header("Location: admin_login.php?error=dberror");
         } else {
             mysqli_stmt_bind_param($stmt, "s", $user);
             mysqli_stmt_execute($stmt);
@@ -20,22 +20,22 @@
         if ($row = mysqli_fetch_assoc($result)) {
             $passwordCheck = password_verify($password, $row['Password']);
             /* if ($passwordCheck == false) { 
-                header("Location: test.php?error=wrongpassword");
+                header("Location: admin_login.php?error=wrongpassword");
                 exit();
             } else if ($passwordCheck == true) { */
                 session_start();
                 $_SESSION['userID'] = $row['Username'];
-                header("Location: test.php?login=success");
+                header("Location: admin.php");
                 exit();
             /* } else {
-                header("Location: test.php?error=wrongpassword");
+                header("Location: admin_login.php?error=wrongpassword");
                 exit();
             } */
         } else { // The correct user was not found in DB
-            header("Location: test.php?error=noresults");
+            header("Location: admin_login.php?error=noresults");
         }
     } else { // Someone tried to enter this page directly
-        header("Location: test.php?error=wrongentry");
+        header("Location: admin_login.php?error=wrongentry");
         exit();
     }
 ?>
