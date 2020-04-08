@@ -38,7 +38,8 @@
                         echo "No results";
                     }
                 } else {
-                    echo "Error: No defined Article ID!";
+                    header("Location: index.php?error=notFound"); // No article with specified id found
+                    exit();
                 }
             ?>
         </div>
