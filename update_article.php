@@ -10,7 +10,7 @@ if (isset($_POST['article-submit']) && isset($_SESSION["article_id"])) {
     $imgurl = $_POST["imgurl"];
     $text = $_POST["text"];
     $sql = "UPDATE 'Articles' SET 'Headline' = '" . $headline . "', 'ImgRef' = '" . $imgurl . "', 'Text' = '" . $text . "'
-    WHERE 'Articles'.'ID' = $id";
+    WHERE 'ID' = $id";
     if (mysqli_query($connection, $sql)) {
         header("Location: admin.php?msg=success");
         exit();
