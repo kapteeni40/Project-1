@@ -17,6 +17,7 @@ if (!isset($_SESSION['userID'])) {
             include 'open.php'; // Database connection
         ?>
         <a href='/logout.php'>Log Out</a>
+        <a href='/article_edit.php'><h3>New Article</h3></a>
         <?php 
             $sql = "SELECT ID, Headline FROM Articles";
             $result = mysqli_query($connection, $sql); // Uses open.php to send SQL query
