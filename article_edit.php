@@ -20,30 +20,29 @@ if (!isset($_SESSION['userID'])) {
     <body>
         <?php 
             if (!isset($_GET["id"])) {
-                echo "<form action='new_article.php'>";
+                echo "<form action='new_article.php' method='post'>";
                 echo "<label for='headline'>Headline: </label>";
                 echo "<input type='text' name='headline'><br>";
                 echo "<label for='imgurl'>Thumbnail: </label>";
                 echo "<input type='text' name='imgurl'><br>";
                 echo "<label for='text'>Text: </label>";
                 echo "<input type='text' name='text'><br>";
-                echo "<input type='submit' value='Submit' name='article-submit'>";
+                echo "<button type='submit' value='Submit' name='article-submit'>Submit</button>";
                 echo "</form>";
             } else {
                 $id = $_GET["id"];
-                $_SESSION["article_id"] = $id;
                 $sql = "SELECT Headline, ImgRef, Text FROM Articles WHERE ID=$id";
                 $result = mysqli_query($connection, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<form action='update_article.php'>";
+                        echo "<form action='update_article.php?id=" . $id . "' method='post'>";
                         echo "<label for='headline'>Headline: </label>";
                         echo "<input type='text' name='headline' value='" . $row["Headline"] . "'><br>";
                         echo "<label for='imgurl'>Thumbnail: </label>";
                         echo "<input type='text' name='imgurl' value='" . $row["ImgRef"] . "'><br>";
                         echo "<label for='text'>Text: </label>";
                         echo "<input type='text' name='text' value='" . $row["Text"] . "'><br>";
-                        echo "<input type='submit' value='Submit' name='article-submit'>";
+                        echo "<button type='submit' value='Submit' name='article-submit'>Submit</button>";
                         echo "</form>";
                     }
                 } else {

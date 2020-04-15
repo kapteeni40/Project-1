@@ -8,16 +8,16 @@ if (isset($_POST['article-submit'])) {
     $imgurl = $_POST["imgurl"];
     $text = $_POST["text"];
     $sql = "INSERT INTO 'Articles' ('Headline', 'ImgRef', 'Text') 
-    VALUES (" . $headline . ", " . $imgurl . ", " . $text . ")";
+    VALUES (´" . $headline . "´, ´" . $imgurl . "´, ´" . $text . "´)";
     if (mysqli_query($connection, $sql)) {
         header("Location: admin.php?msg=success");
         exit();
     } else {
-        header("Location: admin.php?error=dberror");
+        header("Location: admin.php?error_na=" . mysqli_error($connection));
         exit();
     }
 } else { // Someone tried to enter this page directly
-    header("Location: admin.php?error=wrongentry");
+    header("Location: admin.php?error=wrongentry_na");
     exit();
 }
 ?>

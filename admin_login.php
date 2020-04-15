@@ -1,10 +1,10 @@
 <?php 
-    session_start(); 
+session_start(); 
 
-    if (isset($_SESSION['userID'])) {
-        header("Location: logout.php"); // Logs out first if already logged in
-        exit();
-    }
+if (isset($_SESSION['userID'])) {
+    header("Location: logout.php"); // Logs out first if already logged in
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
