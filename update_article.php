@@ -7,13 +7,16 @@ if (isset($_POST['article-submit'])) {
     $id = $_GET["id"];
     $headline = $_POST["headline"];
     $imgurl = $_POST["imgurl"];
-    $text = $_POST["text"];
-    $sql = "UPDATE Articles SET ´Headline´ = ´" . $headline . "´, ´ImgRef´ = ´" . $imgurl . "´, ´Text´ = ´" . $text . "´ WHERE ´ID´ = " . $id;
-    if (mysqli_query($connection, $sql)) {
-        header("Location: admin.php?msg=success");
+    $content = $_POST["content"];
+    $sql = "UPDATE Articles SET Headline=?, ImgRef=?, Content=? WHERE ID=?";
+    $stmt = mysqli_stmt_init($connection);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: admin.php?error_ua=sql");
         exit();
     } else {
-        header("Location: admin.php?error_ua=" . mysqli_error($connection));
+        mysqli_stmt_bind_param($stmt, "sssd", $headline, $imgurl, $content, $id);
+        mysqli_stmt_execute($stmt);
+        header("Location: admin.php?msg=success_ua");
         exit();
     }
     include 'close.php';

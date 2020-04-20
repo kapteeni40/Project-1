@@ -26,12 +26,12 @@ if (!isset($_SESSION['userID'])) {
                 echo "<label for='imgurl'>Thumbnail: </label>";
                 echo "<input type='text' name='imgurl'><br>";
                 echo "<label for='text'>Text: </label>";
-                echo "<input type='text' name='text'><br>";
+                echo "<input type='text' name='content'><br>";
                 echo "<button type='submit' value='Submit' name='article-submit'>Submit</button>";
                 echo "</form></div>";
             } else {
                 $id = $_GET["id"];
-                $sql = "SELECT Headline, ImgRef, Text FROM Articles WHERE ID=$id";
+                $sql = "SELECT Headline, ImgRef, Content FROM Articles WHERE ID=$id";
                 $result = mysqli_query($connection, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -41,7 +41,7 @@ if (!isset($_SESSION['userID'])) {
                         echo "<label for='imgurl'>Thumbnail: </label>";
                         echo "<input type='text' name='imgurl' value='" . $row["ImgRef"] . "'><br>";
                         echo "<label for='text'>Text: </label>";
-                        echo "<input type='text' name='text' value='" . $row["Text"] . "'><br>";
+                        echo "<input type='text' name='content' value='" . $row["Content"] . "'><br>";
                         echo "<button type='submit' value='Submit' name='article-submit'>Submit</button>";
                         echo "</form></div>";
                     }

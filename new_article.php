@@ -6,13 +6,14 @@ if (isset($_POST['article-submit'])) {
     include 'open.php'; // Database connection
     $headline = $_POST["headline"];
     $imgurl = $_POST["imgurl"];
-    $text = $_POST["text"];
-    $sql = "INSERT INTO 'Articles' ('Headline', 'ImgRef', 'Text') 
-    VALUES (´" . $headline . "´, ´" . $imgurl . "´, ´" . $text . "´)";
+    $content = $_POST["content"];
+    $sql = "INSERT INTO 'Articles' ('Headline', 'ImgRef', 'Content') 
+    VALUES (´" . $headline . "´, ´" . $imgurl . "´, ´" . $content . "´)";
     if (mysqli_query($connection, $sql)) {
         header("Location: admin.php?msg=success");
         exit();
     } else {
+        $error = mysqli_error($connection);
         header("Location: admin.php?error_na=" . mysqli_error($connection));
         exit();
     }
