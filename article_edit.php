@@ -14,13 +14,13 @@ if (!isset($_SESSION['userID'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/article_edit.css">
         <title>Article Edit</title>
     </head>
     <body>
         <?php 
             if (!isset($_GET["id"])) {
-                echo "<form action='new_article.php' method='post'>";
+                echo "<div class='container'><form action='new_article.php' method='post'>";
                 echo "<label for='headline'>Headline: </label>";
                 echo "<input type='text' name='headline'><br>";
                 echo "<label for='imgurl'>Thumbnail: </label>";
@@ -28,14 +28,14 @@ if (!isset($_SESSION['userID'])) {
                 echo "<label for='text'>Text: </label>";
                 echo "<input type='text' name='text'><br>";
                 echo "<button type='submit' value='Submit' name='article-submit'>Submit</button>";
-                echo "</form>";
+                echo "</form></div>";
             } else {
                 $id = $_GET["id"];
                 $sql = "SELECT Headline, ImgRef, Text FROM Articles WHERE ID=$id";
                 $result = mysqli_query($connection, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<form action='update_article.php?id=" . $id . "' method='post'>";
+                        echo "<div class='container'><form action='update_article.php?id=" . $id . "' method='post'>";
                         echo "<label for='headline'>Headline: </label>";
                         echo "<input type='text' name='headline' value='" . $row["Headline"] . "'><br>";
                         echo "<label for='imgurl'>Thumbnail: </label>";
@@ -43,7 +43,7 @@ if (!isset($_SESSION['userID'])) {
                         echo "<label for='text'>Text: </label>";
                         echo "<input type='text' name='text' value='" . $row["Text"] . "'><br>";
                         echo "<button type='submit' value='Submit' name='article-submit'>Submit</button>";
-                        echo "</form>";
+                        echo "</form></div>";
                     }
                 } else {
                     header("Location: admin.php?error=notFound"); // No article with specified id found
