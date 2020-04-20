@@ -32,7 +32,7 @@
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo '<h3 class="article_head">' . $row["Headline"] . '</h3>';
                             echo '<img class="article_img" src="' . $row["ImgRef"] . '" alt="Image">';
-                            echo '<p class="article_text">' . $row["Content"] . '</p>';
+                            echo '<p class="article_text">' . nl2br($row["Content"]) . '</p>';
                         }
                     } else {
                         echo "No results";

@@ -10,6 +10,9 @@ if (!isset($_SESSION['userID'])) {
 <html>
     <head>
         <title>Admin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/admin.css">
     </head>
     <body>
         <?php 

@@ -26,7 +26,7 @@ if (!isset($_SESSION['userID'])) {
                 echo "<label for='imgurl'>Thumbnail: </label>";
                 echo "<input type='text' name='imgurl'><br>";
                 echo "<label for='text'>Text: </label>";
-                echo "<input type='text' name='content'><br>";
+                echo "<textarea name='content'></textarea><br>";
                 echo "<button type='submit' value='Submit' name='article-submit'>Submit</button>";
                 echo "</form></div>";
             } else {
@@ -41,7 +41,7 @@ if (!isset($_SESSION['userID'])) {
                         echo "<label for='imgurl'>Thumbnail: </label>";
                         echo "<input type='text' name='imgurl' value='" . $row["ImgRef"] . "'><br>";
                         echo "<label for='text'>Text: </label>";
-                        echo "<input type='text' name='content' value='" . $row["Content"] . "'><br>";
+                        echo "<textarea name='content'>" . $row["Content"] . "</textarea><br>";
                         echo "<button type='submit' value='Submit' name='article-submit'>Submit</button>";
                         echo "</form></div>";
                     }

@@ -39,7 +39,6 @@ header {
 .article_text {
     grid-column-start: 4;
     grid-column-end: 10;
-    text-align: center;
 }
 
 .banner_1 {
