@@ -13,6 +13,34 @@ if (!isset($_SESSION['userID'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/admin.css">
+        <?php
+            // Displays any errors for the user
+            if (isset($_GET["error"])) {
+                $error = $_GET["error"];
+                if ($error == "notFound") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('No article of that ID was found!')";
+                    echo "</script>";
+                } else if ($error == "wrongentry_na" || $error == "wrongentry_ua") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('Tried to access a non-browsable page!')";
+                    echo "</script>";
+                }
+            }
+            // Displays other systems messages
+            if (isset($_GET["msg"])) {
+                $msg = $_GET["msg"];
+                if ($msg == "success_na") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('New article created successfully!')";
+                    echo "</script>";
+                } else if ($msg == "success_ua") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('Article updated successfully!')";
+                    echo "</script>";
+                }
+            }
+        ?>
     </head>
     <body>
         <?php 

@@ -6,6 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/index.css">
         <title>Frontpage</title>
+        <?php
+            if (isset($_GET["error"])) {
+                $error = $_GET["error"];
+                if ($error == "notFound") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('No article of that ID was found!')";
+                    echo "</script>";
+                }
+            }
+        ?>
     </head>
     <body>
         <?php 

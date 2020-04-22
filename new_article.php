@@ -10,7 +10,7 @@ if (isset($_POST['article-submit'])) {
     $sql = "INSERT INTO 'Articles' ('Headline', 'ImgRef', 'Content') 
     VALUES (´" . $headline . "´, ´" . $imgurl . "´, ´" . $content . "´)";
     if (mysqli_query($connection, $sql)) {
-        header("Location: admin.php?msg=success");
+        header("Location: admin.php?msg=success_na");
         exit();
     } else {
         $error = mysqli_error($connection);

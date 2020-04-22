@@ -13,6 +13,16 @@ if (isset($_SESSION['userID'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/admin_login.css">
         <title>Admin Login</title>
+        <?php
+            if (isset($_GET["error"])) {
+                $error = $_GET["error"];
+                if ($error == "noLogin") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('You must be logged in to access the admin page!')";
+                    echo "</script>";
+                }
+            }
+        ?>
     </head>
     <body>
         <div class="container">
