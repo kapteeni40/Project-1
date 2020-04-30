@@ -18,19 +18,16 @@
         }
         $result = mysqli_stmt_get_result($stmt);
         if ($row = mysqli_fetch_assoc($result)) {
-            $passwordCheck = password_verify($password, $row['Password']);
-            /* if ($passwordCheck == false) { 
+            /* $passwordCheck = password_verify($password, $row['Password']);
+            if (!$passwordCheck) {
                 header("Location: admin_login.php?error=wrongpassword");
                 exit();
-            } else if ($passwordCheck == true) { */
+            } else {  */
                 session_start();
                 $_SESSION['userID'] = $row['Username'];
                 header("Location: admin.php");
                 exit();
-            /* } else {
-                header("Location: admin_login.php?error=wrongpassword");
-                exit();
-            } */
+            /* } */
         } else { // The correct user was not found in DB
             header("Location: admin_login.php?error=noresults");
         }
