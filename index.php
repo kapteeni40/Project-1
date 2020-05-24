@@ -24,7 +24,7 @@
         ?>
         <header>
             <div class="logo_container">
-                <img class="logo" src="https://images3.memedroid.com/images/UPLOADED279/5bd6cc01a70a6.jpeg" alt="logo">
+                <a href="https://trilobate-delay.000webhostapp.com/"><img class="logo" src="/src/TrilobateDelay.png" alt="logo"></a>
             </div>
         </header>
         <div class="content_container">
