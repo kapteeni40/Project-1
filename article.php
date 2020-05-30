@@ -16,13 +16,7 @@
                 <a href="https://trilobate-delay.000webhostapp.com/"><img class="logo" src="/src/TrilobateDelay.png" alt="logo"></a>
             </div>
         </header>
-        <div class="content_container">
-            <div class="banner_1">
-                <h2>BANNER</h2>
-            </div>
-            <div class="banner_2">
-                <h2>BANNER</h2>
-            </div>
+        <div class="content">
             <?php
                 if (isset($_GET["id"])) {
                     $id = $_GET["id"];
