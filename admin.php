@@ -75,7 +75,7 @@ if (!isset($_SESSION['userID'])) {
                 $result = mysqli_query($connection, $sql); // Uses open.php to send SQL query
                 if (mysqli_num_rows($result) > 0) { // Checks if the query provided any results
                     while ($row = mysqli_fetch_assoc($result)) { // Displays results for every one found in database
-                        echo '<tr><td><h3>' . $row["Headline"] . '</h3></td><td><a href="/article_edit.php?id=' . $row["ID"] . '"><h3>Edit article</h3></a></td></tr>';
+                        echo '<tr><td><h3>' . $row["Headline"] . '</h3></td><td><a href="/article_edit.php?id=' . $row["ID"] . '"><h3>Edit article</h3></a></td><td><a href="/article_delete.php?id=' . $row["ID"] . '"><h3>Delete article</h3></a></td></tr>';
                     }
                 } else {
                     echo "No results";
