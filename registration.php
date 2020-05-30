@@ -27,15 +27,13 @@
             $sql = "INSERT INTO Users (Username, Password) VALUES (?, ?)";
             $stmt = mysqli_stmt_init($connection);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
-                echo $connection->error;
-                //header("Location: admin.php?error_ua=sql");
-                exit();
+                $_SESSION["error"] = $connection->error;
             } else {
                 mysqli_stmt_bind_param($stmt, "ss", $user, $hashedPassword);
                 mysqli_stmt_execute($stmt);
-                header("Location: admin.php?msg=success_ua");
-                exit();
             }
+            header("Location: admin.php");
+            exit();
             include 'close.php';
         }
         

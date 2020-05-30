@@ -14,7 +14,7 @@ if (!isset($_SESSION['userID'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/admin.css">
         <?php
-            // Displays any errors for the user
+            // Displays any errors for the user from url parameters
             if (isset($_GET["error"])) {
                 $error = $_GET["error"];
                 if ($error == "notFound") {
@@ -27,6 +27,26 @@ if (!isset($_SESSION['userID'])) {
                     echo "</script>";
                 }
             }
+
+            // Displays any errors for the user from session data
+            if (isset($_SESSION["error"])) {
+                $error = $_SESSION["error"];
+                unset($_SESSION["error"]);
+                if ($error == "notFound") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('No article of that ID was found!')";
+                    echo "</script>";
+                } else if ($error == "wrongentry_na" || $error == "wrongentry_ua") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('Tried to access a non-browsable page!')";
+                    echo "</script>";
+                } else {
+                    echo "<script type='text/javascript'>";
+                    echo "alert(" . $error . ")";
+                    echo "</script>";
+                }
+            }
+
             // Displays other systems messages
             if (isset($_GET["msg"])) {
                 $msg = $_GET["msg"];

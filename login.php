@@ -19,18 +19,18 @@
         $result = mysqli_stmt_get_result($stmt);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                /*$passwordCheck = password_verify($password, $row['Password']);
+                $passwordCheck = password_verify($password, $row['Password']);
                 if (!($passwordCheck)) {
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                     $mysqliPassword = $row['Password'];
                     header("Location: admin_login.php?error=wrongpassword&hp=" . $hashedPassword . "&mp=" . $mysqliPassword);
                     exit();
-                } else {*/
+                } else {
                     session_start();
                     $_SESSION['userID'] = $row['Username'];
                     header("Location: admin.php");
                     exit();
-                /*}*/
+                }
             }
         } else { // The correct user was not found in DB
             header("Location: admin_login.php?error=noresults");
