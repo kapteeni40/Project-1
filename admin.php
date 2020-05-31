@@ -47,9 +47,23 @@ if (!isset($_SESSION['userID'])) {
                 }
             }
 
-            // Displays other systems messages
+            // Displays other systems messages from url parameters
             if (isset($_GET["msg"])) {
                 $msg = $_GET["msg"];
+                if ($msg == "success_na") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('New article created successfully!')";
+                    echo "</script>";
+                } else if ($msg == "success_ua") {
+                    echo "<script type='text/javascript'>";
+                    echo "alert('Article updated successfully!')";
+                    echo "</script>";
+                }
+            }
+
+            if (isset($_SESSION["msg"])) {
+                $msg = $_SESSION["msg"];
+                unset($_SESSION["msg"]);
                 if ($msg == "success_na") {
                     echo "<script type='text/javascript'>";
                     echo "alert('New article created successfully!')";

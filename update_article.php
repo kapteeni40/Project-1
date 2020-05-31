@@ -11,17 +11,18 @@ if (isset($_POST['article-submit'])) {
     $sql = "UPDATE Articles SET Headline=?, ImgRef=?, Content=? WHERE ID=?";
     $stmt = mysqli_stmt_init($connection);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: admin.php?error_ua=sql");
-        exit();
+        $_SESSION["error"] = $connection->error;
     } else {
         mysqli_stmt_bind_param($stmt, "sssd", $headline, $imgurl, $content, $id);
         mysqli_stmt_execute($stmt);
-        header("Location: admin.php?msg=success_ua");
-        exit();
+        $_SESSION["msg"] = "success_ua";
     }
+    header("Location: admin.php");
+    exit();
     include 'close.php';
 } else { // Someone tried to enter this page directly
-    header("Location: admin.php?error=wrongentry_ua");
+    $_SESSION["error"] = "wrongentry_ua";
+    header("Location: admin.php");
     exit();
 }
 ?>
