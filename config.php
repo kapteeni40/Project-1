@@ -1,6 +1,7 @@
 <?php
-    $servername = "localhost";
-    $username = "id12791829_trilobate";
-    $password = "parakapu";
-    $dbname = "id12791829_trilobatedb1";
+    $servername = "servername";
+    $username = "username";
+    $password = "password";
+    $dbname = "dbname";
+    // Note that these are not actual names or password
 ?>
