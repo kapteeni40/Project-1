@@ -14,16 +14,6 @@
             include 'config.php'; // Connection configuration
             include 'open.php'; // Database connection
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            /*$sql = "INSERT INTO 'Users' ('Username', 'Password') VALUES (´" . $user . "´, ´" . $hashedPassword . "´)";
-            if (mysqli_query($connection, $sql)) {
-                header("Location: admin.php?msg=success_reg");
-                exit();
-            } else {
-                $error = mysqli_error($connection);
-                $header = "Location: user_registration.php?error_reg";
-                header($header);
-                exit();
-            }*/
             $sql = "INSERT INTO Users (Username, Password) VALUES (?, ?)";
             $stmt = mysqli_stmt_init($connection);
             if (!mysqli_stmt_prepare($stmt, $sql)) {

@@ -18,7 +18,9 @@ if (!isset($_SESSION['userID'])) {
         <title>Article Edit</title>
     </head>
     <body>
-        <?php 
+        <?php /* Checks if the edit feature has been given an id as a parameter. If yes, then fills the form fields with the article text
+                 and edits the article. If no id is found, instead creates a new article. 
+              */
             if (!isset($_GET["id"])) {
                 echo "<div class='container'><form action='new_article.php' method='post'>";
                 echo "<label for='headline'>Headline: </label>";

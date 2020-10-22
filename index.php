@@ -48,6 +48,7 @@
                 }
             ?>
             </table>
+            <!-- This part takes care of the pagination. It checks the amount of pages and then adjusts the pagination selection accordingly -->
             <?php if (ceil($total_articles / $num_results_on_page) > 0): ?>
                 <ul class="pagination">
                     <?php if ($page > 1): ?>

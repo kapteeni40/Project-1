@@ -17,7 +17,7 @@
             </div>
         </header>
         <div class="content">
-            <?php
+            <?php // checking if an article with the given id exists, then fetches the result from backend and prints it on screen
                 if (isset($_GET["id"])) {
                     $id = $_GET["id"];
                     $sql = "SELECT Headline, ImgRef, Content FROM Articles WHERE ID=$id";
